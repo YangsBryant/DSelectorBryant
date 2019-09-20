@@ -49,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
                 dSelectorPopup.dismiss();
             }
         });
-        dSelectorPopup.setSelectoMoverListener(new DSelectorPopup.SelectorMoveListener() {
+        /*dSelectorPopup.setSelectoMoverListener(new DSelectorPopup.SelectorMoveListener() {
            @Override
            public void onSelectorMove(int position, String text) {
                Toast.makeText(MainActivity.this,text,Toast.LENGTH_SHORT).show();
            }
-       });
+       });*/
     }
 }

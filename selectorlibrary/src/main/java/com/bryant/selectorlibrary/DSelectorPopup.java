@@ -26,8 +26,7 @@ public class DSelectorPopup extends PopupWindow {
 
     private int height = ViewGroup.LayoutParams.WRAP_CONTENT;//PopupWindow的高度
     private int offset = 1;// 对话框中当前项上面和下面的项数
-    private int seletion = 1;// 默认选中项
-    int selectedIndex = 1; // 默认选中项
+    private int seletion = 0;// 默认选中项
     int textSize = 14; //字体大小
     int textcolor_selection;//选中文本颜色
     int textcolor_unchecked;//未选中文本颜色
@@ -41,8 +40,10 @@ public class DSelectorPopup extends PopupWindow {
     int buttonSize=16;//按钮文字大小
     int buttonColor;//按钮文字颜色
     Drawable drawable;//按钮背景
-    int buttonWidt = ViewGroup.LayoutParams.WRAP_CONTENT;
-    int buttonHeight;
+    int buttonWidt = ViewGroup.LayoutParams.WRAP_CONTENT;//按钮的宽度
+    int buttonHeight;//按钮的高度
+    int index;//当前滚动的下标
+    String value;//当前滚动的文本
     public DSelectorPopup(Activity activity, ArrayList<String> list){
         this.activity = activity;
         this.list = list;
@@ -64,6 +65,8 @@ public class DSelectorPopup extends PopupWindow {
         this.setFocusable(isOutside);
         this.setOutsideTouchable(isOutside);
         this.setAnimationStyle(R.style.popup_style);
+        index = seletion;
+        value = list.get(seletion);
 
         SelectorView selectorView = view.findViewById(R.id.selectorView);
         selectorView.setOffset(offset);
@@ -76,6 +79,8 @@ public class DSelectorPopup extends PopupWindow {
         selectorView.setItems(list);
         selectorView.setOnMoveViewListener(new SelectorView.OnMoveViewListener(){
             public void onSelected(int selectedIndex, String item) {
+                index = selectedIndex;
+                value = item;
                 if (selectoMoverListener != null) {
                     selectoMoverListener.onSelectorMove(selectedIndex, item);
                 }
@@ -106,6 +111,9 @@ public class DSelectorPopup extends PopupWindow {
         selectorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(selectorClickListener!=null) {
+                    selectorClickListener.onSelectorClick(index, value);
+                }
                 dismissPopup();
             }
         });
@@ -250,6 +258,7 @@ public class DSelectorPopup extends PopupWindow {
         return this;
     }
 
+    //px转dp
     private int getPixelsFromDp(int size){
         DisplayMetrics metrics =new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
