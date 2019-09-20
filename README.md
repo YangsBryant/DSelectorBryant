@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //弹出窗体
                 dSelectorPopup.popOutShadow(constraintLayout);
             }
         });
@@ -49,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectorClick(int position, String text) {
                 Toast.makeText(MainActivity.this,text,Toast.LENGTH_SHORT).show();
-                dSelectorPopup.dismiss();
+                //缩回窗体
+                dSelectorPopup.dismissPopup();
             }
         });
 
@@ -81,18 +83,26 @@ Tips:分割线的颜色值为：0xff 加上16进制颜色值，例如：0xffD81B
 ## DSelectorBryant属性大全
 方法名 | 属性
 --------- | -------------
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
-setHeights(int mHeight) | 显示具体的高度(dp),设置0是自适应(高度没有默认值，需要主动设置)
+build() | 参数设置完毕，在最后build一下
+setHeights(int height) | PopupWindow的高度，单位dp
+isOutside(boolean bl) | 点击弹窗外是否消失,默认true
+setSeletion(int offset) | 对话框中当前项上面和下面的项数
+setOffset(int seletion) | 默认选中项
+setTextSize(int size) | 文本字体大小
+setTextcolor_selection(int textcolor_selection) | 选中文本颜色
+setTextcolor_unchecked(int textcolor_unchecked) | 未选中文本颜色
+setGradual_color(int gradual_color) | 分割线颜色
+setFining(boolean fining) | 是否开启分割线两端变细,默认true
+setTitleText(String titleText) | 标题的文字
+setTitleSize(int titleSize) | 标题文字大小
+setTitleColor(int titleColor) | 标题文字颜色
+setButtonText(String buttonText) | 按钮文本
+setButtonSize(int buttonSize) | 按钮文字大小
+setButtonColor(int buttonColor) | 按钮文字颜色
+setButton_background(Drawable drawable) | 按钮背景
+setButtonWidt(int buttonWidt)| 按钮宽度，单位dp
+setButtonHeight(int buttonHeight) | 按钮高度，单位dp
+popOutShadow(View view) | 显示弹窗
+dismissPopup() | 关闭弹窗
+setSelectorListener(SelectorClickListener selectorListener) | 点击监听器
+setSelectoMoverListener(SelectorMoveListener selectoMoverListener) | 滑动监听器
