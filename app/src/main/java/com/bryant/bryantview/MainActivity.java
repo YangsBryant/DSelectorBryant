@@ -42,13 +42,18 @@ public class MainActivity extends AppCompatActivity {
                 dSelectorPopup.popOutShadow(constraintLayout);
             }
         });
+
+        /*点击监听器
+        Tips:实现此监听器，点击button也会返回当前选中项的下标和文本，因此button既可以当做取消用，也可以当做确定用*/
         dSelectorPopup.setSelectorListener(new DSelectorPopup.SelectorClickListener() {
             @Override
             public void onSelectorClick(int position, String text) {
                 Toast.makeText(MainActivity.this,text,Toast.LENGTH_SHORT).show();
-                dSelectorPopup.dismiss();
+                dSelectorPopup.dismissPopup();
             }
         });
+
+        //滑动监听器
         /*dSelectorPopup.setSelectoMoverListener(new DSelectorPopup.SelectorMoveListener() {
            @Override
            public void onSelectorMove(int position, String text) {
