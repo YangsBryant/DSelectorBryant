@@ -25,13 +25,19 @@ import java.util.List;
 
 public class SelectorView extends ScrollView  {
 
-    public static class OnWheelViewListener {
-        public void onSelected(int selectedIndex, String item) {
-        }
-    }
-
     private Context context;
     private LinearLayout views;
+    List<String> items;
+    public static final int OFF_SET_DEFAULT = 1;
+
+    int offset = OFF_SET_DEFAULT; // 偏移量（需要在最前面和最后面补全）
+    int displayItemCount; // 每页显示的数量
+    int selectedIndex = 1; // 默认选中第三项
+    int textSize = 14; //文本字体大小
+    int textcolor_selection;//选中文本颜色
+    int textcolor_unchecked;//未选中文本颜色
+    int gradual_color= 0xffEAEAEA;//分割线颜色
+    boolean isFining = true;//是否开启分割线两端变细
 
     public SelectorView(Context context) {
         super(context);
@@ -48,8 +54,6 @@ public class SelectorView extends ScrollView  {
         init(context);
     }
 
-    List<String> items;
-
     public void setItems(List<String> list) {
         if (null == items) {
             items = new ArrayList<>();
@@ -63,17 +67,32 @@ public class SelectorView extends ScrollView  {
         initData();
     }
 
-    public static final int OFF_SET_DEFAULT = 1;
-    int offset = OFF_SET_DEFAULT; // 偏移量（需要在最前面和最后面补全）
-    int displayItemCount; // 每页显示的数量
-    int selectedIndex = 1;
-
-
     public void setOffset(int offset) {
         this.offset = offset;
     }
 
+    public void setTextSize(int size) {
+        this.textSize = size;
+    }
+
+    public void setTextcolor_selection(int textcolor_selection) {
+        this.textcolor_selection = textcolor_selection;
+    }
+
+    public void setTextcolor_unchecked(int textcolor_unchecked) {
+        this.textcolor_unchecked = textcolor_unchecked;
+    }
+
+    public void setGradual_color(int gradual_color) {
+        this.gradual_color = gradual_color;
+    }
+
+    public void setFining(boolean fining) {
+        isFining = fining;
+    }
+
     private void init(Context context) {
+
         this.context = context;
         this.setVerticalScrollBarEnabled(false);
 
@@ -149,7 +168,7 @@ public class SelectorView extends ScrollView  {
         TextView tv = new TextView(context);
         tv.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         tv.setSingleLine(true);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
         tv.setText(item);
         tv.setGravity(Gravity.CENTER);
         int padding = dip2px(15);
@@ -190,9 +209,9 @@ public class SelectorView extends ScrollView  {
                 return;
             }
             if (position == i) {
-                itemView.setTextColor(Color.parseColor("#0A89FF"));
+                itemView.setTextColor(textcolor_selection);
             } else {
-                itemView.setTextColor(Color.parseColor("#999999"));
+                itemView.setTextColor(textcolor_unchecked);
             }
         }
     }
@@ -223,12 +242,14 @@ public class SelectorView extends ScrollView  {
 
         if (null == paint) {
             paint = new Paint();
-            paint.setColor(Color.parseColor("#EAEAEA"));
+            paint.setColor(gradual_color);
             paint.setTypeface(Typeface.SANS_SERIF);
             paint.setStrokeWidth(dip2px(1f));
-            Shader lineShader = new LinearGradient(viewWidth / 6, obtainSelectedAreaBorder()[0], viewWidth * 5 / 6, obtainSelectedAreaBorder()[0],
-                    new int[]{0x00ffffff, 0xffEAEAEA, 0x00ffffff}, null, Shader.TileMode.REPEAT);
-            paint.setShader(lineShader);
+            if(isFining) {
+                Shader lineShader = new LinearGradient(viewWidth / 6, obtainSelectedAreaBorder()[0], viewWidth * 5 / 6, obtainSelectedAreaBorder()[0],
+                        new int[]{0x00ffffff, gradual_color, 0x00ffffff}, null, Shader.TileMode.REPEAT);
+                paint.setShader(lineShader);
+            }
         }
 
         background = new Drawable() {
@@ -265,8 +286,8 @@ public class SelectorView extends ScrollView  {
     }
 
     private void onSeletedCallBack() {
-        if (null != onWheelViewListener) {
-            onWheelViewListener.onSelected(selectedIndex, items.get(selectedIndex));
+        if (null != onMoveViewListener) {
+            onMoveViewListener.onSelected(selectedIndex, items.get(selectedIndex));
         }
     }
 
@@ -311,10 +332,15 @@ public class SelectorView extends ScrollView  {
         return super.onTouchEvent(event);
     }
 
-    private OnWheelViewListener onWheelViewListener;
+    private OnMoveViewListener onMoveViewListener;
 
-    public void setOnWheelViewListener(OnWheelViewListener onWheelViewListener) {
-        this.onWheelViewListener = onWheelViewListener;
+    public static class OnMoveViewListener {
+        public void onSelected(int selectedIndex, String item) {
+        }
+    }
+
+    public void setOnMoveViewListener(OnMoveViewListener onMoveViewListener) {
+        this.onMoveViewListener = onMoveViewListener;
     }
 
     private OnClickViewListener onClickViewListener;

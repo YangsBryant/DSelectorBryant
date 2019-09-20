@@ -7,4 +7,9 @@
     <color name="color1">#7fffffff</color>
     <color name="color2">#7fEAEAEA</color>
     <color name="color3">#7fffffff</color>
+
+    <color name="white">#ffffff</color>
+    <color name="titleColor">#181818</color>
+    <color name="textcolor_selection">#0A89FF</color>
+    <color name="textcolor_unchecked">#999999</color>
 </resources>

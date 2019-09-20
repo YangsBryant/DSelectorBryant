@@ -4,18 +4,16 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
-
-import com.bryant.selectorlibrary.SelectorPopup;
-
+import com.bryant.selectorlibrary.DSelectorPopup;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    SelectorPopup selectorPopup;
-    ConstraintLayout layout;
+    DSelectorPopup dSelectorPopup;
+    ConstraintLayout constraintLayout;
     ArrayList<String> list = new ArrayList<>();
-    TextView textView;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,24 +22,34 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i <= 10; i++) {
             list.add("YMF"+i);
         }
-        selectorPopup = new SelectorPopup(this,list);
+        dSelectorPopup = new DSelectorPopup(this,list);
+        dSelectorPopup.build();
+/*        dSelectorPopup.setOffset(5)
+                      .setTextSize(30)
+                .setTextcolor_selection(getResources().getColor(R.color.colorAccent))
+                .setTextcolor_unchecked(getResources().getColor(R.color.colorPrimary))
+                .setGradual_color(0xffD81B60)
+                .setTitleText("我是标题")
+                .setTitleColor(getResources().getColor(R.color.colorPrimary))
+                .setTitleSize(25)
+                .setButton_background(getResources().getDrawable(R.drawable.popup_bg)).build();*/
 
-        layout = findViewById(R.id.main);
-        textView = findViewById(R.id.text);
-        textView.setOnClickListener(new View.OnClickListener() {
+        constraintLayout = findViewById(R.id.main);
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectorPopup.popOutShadow(layout);
+                dSelectorPopup.popOutShadow(constraintLayout);
             }
         });
-        selectorPopup.setSelectorListener(new SelectorPopup.SelectorClickListener() {
+        dSelectorPopup.setSelectorListener(new DSelectorPopup.SelectorClickListener() {
             @Override
             public void onSelectorClick(int position, String text) {
                 Toast.makeText(MainActivity.this,text,Toast.LENGTH_SHORT).show();
-                selectorPopup.dismiss();
+                dSelectorPopup.dismiss();
             }
         });
-       selectorPopup.setSelectoMoverListener(new SelectorPopup.SelectorMoveListener() {
+        dSelectorPopup.setSelectoMoverListener(new DSelectorPopup.SelectorMoveListener() {
            @Override
            public void onSelectorMove(int position, String text) {
                Toast.makeText(MainActivity.this,text,Toast.LENGTH_SHORT).show();

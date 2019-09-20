@@ -10,9 +10,10 @@
     >
 
     <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="设备选择"
+        android:text="请选择"
         android:textColor="#181818"
         android:textSize="18sp"
         android:layout_margin="20dp"
@@ -25,8 +26,8 @@
 
     <Button
         android:id="@+id/selectorButton"
-        android:layout_width="345dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="取消"
         android:textColor="#ffffff"
         android:textSize="16sp"
