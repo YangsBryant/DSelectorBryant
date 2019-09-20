@@ -85,14 +85,14 @@ Tips:分割线的颜色值为：0xff 加上16进制颜色值，例如：0xffD81B
 --------- | -------------
 build() | 参数设置完毕，在最后build一下
 setHeights(int height) | PopupWindow的高度，单位dp
-isOutside(boolean bl) | 点击弹窗外是否消失,默认true
+isOutside(boolean bl) | 点击弹窗外是否消失，默认true
 setSeletion(int offset) | 对话框中当前项上面和下面的项数
 setOffset(int seletion) | 默认选中项
 setTextSize(int size) | 文本字体大小
 setTextcolor_selection(int textcolor_selection) | 选中文本颜色
 setTextcolor_unchecked(int textcolor_unchecked) | 未选中文本颜色
 setGradual_color(int gradual_color) | 分割线颜色
-setFining(boolean fining) | 是否开启分割线两端变细,默认true
+setFining(boolean fining) | 是否开启分割线两端变细，默认true
 setTitleText(String titleText) | 标题的文字
 setTitleSize(int titleSize) | 标题文字大小
 setTitleColor(int titleColor) | 标题文字颜色
@@ -106,3 +106,5 @@ popOutShadow(View view) | 显示弹窗
 dismissPopup() | 关闭弹窗
 setSelectorListener(SelectorClickListener selectorListener) | 点击监听器
 setSelectoMoverListener(SelectorMoveListener selectoMoverListener) | 滑动监听器
+
+## 联系QQ：961606042
