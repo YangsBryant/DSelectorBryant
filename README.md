@@ -1,6 +1,8 @@
 # DSelectorBryant
 单选滚动选择器
+
 ![这是一张图片](https://github.com/YangsBryant/DSelectorBryant/blob/master/gifhome_320x693_10s.gif)
+
 ## 引入module
 ```java
 allprojects {
