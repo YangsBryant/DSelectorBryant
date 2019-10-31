@@ -300,7 +300,6 @@ public class SelectorView extends ScrollView  {
                 SelectorView.this.smoothScrollTo(0, p * itemHeight);
             }
         });
-
     }
 
     @Override
@@ -322,7 +321,7 @@ public class SelectorView extends ScrollView  {
         if (event.getAction() == MotionEvent.ACTION_UP) {
             x2 = event.getX();
             y2 = event.getY();
-            if (Math.abs(x1 - x2) ==0) {
+            if (Math.abs(x1 - x2) == 0) {
                 onClickViewListener.onClickView(selectedIndex,items.get(selectedIndex));
                 return false;
             }else{

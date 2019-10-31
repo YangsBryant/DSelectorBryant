@@ -3,6 +3,7 @@ package com.bryant.bryantview;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             list.add("YMF"+i);
         }
         dSelectorPopup = new DSelectorPopup(this,list);
-        dSelectorPopup.setGradual_color(0xffD4D4D4).build();
+        dSelectorPopup.setGradual_color(0xffD4D4D4).setSeletion(0).build();
 /*        dSelectorPopup.setOffset(5)
                       .setTextSize(30)
                 .setTextcolor_selection(getResources().getColor(R.color.colorAccent))
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectorClick(int position, String text) {
                 Toast.makeText(MainActivity.this,text,Toast.LENGTH_SHORT).show();
+                Log.i("下标",""+position);
                 dSelectorPopup.dismissPopup();
             }
         });

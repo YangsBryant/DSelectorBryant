@@ -42,7 +42,7 @@ public class DSelectorPopup extends PopupWindow {
     Drawable drawable;//按钮背景
     int buttonWidt = ViewGroup.LayoutParams.WRAP_CONTENT;//按钮的宽度
     int buttonHeight;//按钮的高度
-    int index;//当前滚动的下标
+    int index=1;//当前滚动的下标
     String value;//当前滚动的文本
     public DSelectorPopup(Activity activity, ArrayList<String> list){
         this.activity = activity;
@@ -65,7 +65,6 @@ public class DSelectorPopup extends PopupWindow {
         this.setFocusable(isOutside);
         this.setOutsideTouchable(isOutside);
         this.setAnimationStyle(R.style.popup_style);
-        index = seletion;
         value = list.get(seletion);
 
         SelectorView selectorView = view.findViewById(R.id.selectorView);
@@ -139,13 +138,13 @@ public class DSelectorPopup extends PopupWindow {
     }
 
     // 对话框中当前项上面和下面的项数
-    public DSelectorPopup setSeletion(int offset) {
+    public DSelectorPopup setOffset(int offset) {
         this.offset = offset;
         return this;
     }
 
     // 默认选中项
-    public DSelectorPopup setOffset(int seletion) {
+    public DSelectorPopup setSeletion(int seletion) {
         this.seletion = seletion;
         return this;
     }
