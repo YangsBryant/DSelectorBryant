@@ -14,7 +14,7 @@ allprojects {
 }
 ```
 ```java
-implementation 'com.github.YangsBryant:DSelectorBryant:1.0.2'
+implementation 'com.github.YangsBryant:DSelectorBryant:1.0.3'
 ```
 
 ## 主要代码
@@ -88,8 +88,8 @@ Tips:分割线的颜色值为：0xff 加上16进制颜色值，例如：0xffD81B
 build() | 参数设置完毕，在最后build一下
 setHeights(int height) | PopupWindow的高度，单位dp
 isOutside(boolean bl) | 点击弹窗外是否消失，默认true
-setSeletion(int offset) | 对话框中当前项上面和下面的项数
-setOffset(int seletion) | 默认选中项
+setSeletion(int seletion) | 默认选中项
+setOffset(int offset) | 对话框中当前项上面和下面的项数
 setTextSize(int size) | 文本字体大小
 setTextcolor_selection(int textcolor_selection) | 选中文本颜色
 setTextcolor_unchecked(int textcolor_unchecked) | 未选中文本颜色
