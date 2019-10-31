@@ -3,6 +3,7 @@ package com.bryant.selectorlibrary;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +67,7 @@ public class DSelectorPopup extends PopupWindow {
         this.setOutsideTouchable(isOutside);
         this.setAnimationStyle(R.style.popup_style);
         value = list.get(seletion);
-
+        index = seletion+1;
         SelectorView selectorView = view.findViewById(R.id.selectorView);
         selectorView.setOffset(offset);
         selectorView.setSeletion(seletion);

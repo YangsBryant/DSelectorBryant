@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             list.add("YMF"+i);
         }
         dSelectorPopup = new DSelectorPopup(this,list);
-        dSelectorPopup.setGradual_color(0xffD4D4D4).setSeletion(0).build();
+        dSelectorPopup.setGradual_color(0xffD4D4D4).setSeletion(2).build();
 /*        dSelectorPopup.setOffset(5)
                       .setTextSize(30)
                 .setTextcolor_selection(getResources().getColor(R.color.colorAccent))
