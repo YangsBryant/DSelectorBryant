@@ -209,7 +209,7 @@ public class SelectorView extends ScrollView  {
             if (null == itemView) {
                 return;
             }
-            if (position == i) {
+            if (position == i && !TextUtils.isEmpty(itemView.getText().toString())) {
                 itemView.setTextColor(textcolor_selection);
             } else {
                 itemView.setTextColor(textcolor_unchecked);
